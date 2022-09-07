@@ -1,0 +1,35 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.maindiv{
+    display: flex;
+    /* border:2px solid red; */
+    justify-content: space-between;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    margin: 0px;
+    
+}
+
+ul{
+    display: flex;
+    gap: 100px;
+    justify-content: space-around;
+    list-style: none;
+    text-decoration: none;
+}
+
+li{
+    justify-content: space-between;
+    text-decoration: none; 
+    list-style: none;
+    color: aqua;
+    font-size: 23px;
+   
+}
+
