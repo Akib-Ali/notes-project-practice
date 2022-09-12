@@ -3,6 +3,7 @@ import { Home } from "./Home"
 import { Navbar } from "./navbar"
 import { AllNotes } from "./allNotes"
 import { Notesdetail } from "./notesdetail"
+import { Serach } from "./search"
 
 export const AllRoutes=()=>{
 
@@ -13,7 +14,9 @@ export const AllRoutes=()=>{
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/allnotes" element={<AllNotes/>}/>
+            <Route path="/search" element={<Serach/>}/>
               <Route path="/allnotes/:id" element={<Notesdetail/>}></Route>  
+
         </Routes>
         </>
     )

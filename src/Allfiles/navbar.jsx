@@ -9,6 +9,7 @@ export const Navbar=()=>{
           <ul>
             <li> <NavLink to="/">Home</NavLink> </li>
             <li> <NavLink to="/allnotes">AllNotes</NavLink> </li>
+            <li>  <NavLink to="/search">Search</NavLink>  </li>
           </ul>
 
         </nav>
