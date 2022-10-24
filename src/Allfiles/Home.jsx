@@ -11,14 +11,15 @@ export const Home=()=>{
     const [page,Setpage] = useState(1)
     const[datesort, Setdatesort] = useState("desc")
     const[titlesort,Settitllesort] = useState("desc")
-
+    const[filterrating,setfilterRating] = useState(0)
+ 
 
 
     useEffect(()=>{
         fetchdata()
         setloading(true)
       //   handleDelete()
-       },[page,datesort,titlesort])
+       },[page,datesort,titlesort,filterrating])
   
 
      const fetchdata=()=>{
@@ -29,7 +30,8 @@ export const Home=()=>{
                 _page:page,
                 _limit:6,
                 _sort:"title_note,date",
-                _order:`${titlesort}, ${datesort}`
+                _order:`${titlesort}, ${datesort}`,
+                rating_gte:filterrating
             }
         }).then((res)=>{
             SetData(res.data)
@@ -76,6 +78,20 @@ export const Home=()=>{
             <button  className={Style.date_sort} onClick={()=> Setdatesort("desc")}>Descending  Order</button>
         </div>
 
+
+
+        <div>
+        <h2>Filter By Rating</h2>
+        <div style={{display:"flex" , gap:"40px"}}>  
+        <button onClick={()=> setfilterRating(2)}>Greater Than 2</button>
+        <button onClick={()=> setfilterRating(3)}>Greater Than 3</button>
+        <button onClick={()=> setfilterRating(4)}>Greater Than 4</button>
+        <button onClick={()=> setfilterRating(5)}>Greater Than 5</button>
+
+        </div>
+        
+        </div>
+
         <div className={Style.container}>
           
         
@@ -87,14 +103,21 @@ export const Home=()=>{
                 <div className={Style.main_div} key={ind}> 
                    
                      
-                      <div className={Style.img_div}>  <img src="https://cdn4.vectorstock.com/i/1000x1000/24/03/notes-vector-19192403.jpg" height={100} width={100}></img></div>
+                      <div className={Style.img_div}> 
+                       <img src="https://cdn4.vectorstock.com/i/1000x1000/24/03/notes-vector-19192403.jpg" 
+                       height={100} width={100}></img></div>
 
                     <div className={Style.text_div}>  {e.title_note}</div>
 
                     <div className={Style.text_div}> {e.date}</div>
+                    <div className={Style.text_div}> Rating :{e.rating}</div>
 
-                     <div className={Style.btndetail}> <button className={Style.detailbtn}><Link to={`/allnotes/${e.id}`}>More detal</Link></button>   </div> 
-                    {/* <Link to={`/allnotes/${e.id}`}>More detal</Link> */}
+                     <div className={Style.btndetail}> 
+                     <button className={Style.detailbtn}>
+                     <Link to={`/allnotes/${e.id}`}>More detal</Link>
+                     </button>  
+                     </div> 
+                    
 
                     <div className={Style.btn}> <button onClick={()=> handleDelete(ind)}>Delete</button>   </div>
                 
